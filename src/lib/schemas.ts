@@ -1,5 +1,40 @@
 import { z } from "zod";
 
+/* ─── Phase 4 — Auth ──────────────────────────────────────── */
+
+const phoneSchema = z
+  .string()
+  .trim()
+  .min(7, "Enter a valid phone number")
+  .max(20, "Phone number is too long")
+  .regex(/^[+\d][\d\s().-]+$/, "Phone number contains invalid characters");
+
+export const signUpSchema = z.object({
+  fullName: z
+    .string()
+    .trim()
+    .min(2, "Full name is too short")
+    .max(80, "Full name is too long"),
+  phone: phoneSchema,
+  email: z.string().trim().toLowerCase().email("Enter a valid email address"),
+  password: z
+    .string()
+    .min(8, "Use at least 8 characters")
+    .max(72, "Password is too long"),
+  next: z.string().optional(),
+  website: z.string().max(0).optional().or(z.literal("")),
+});
+
+export const signInSchema = z.object({
+  email: z.string().trim().toLowerCase().email("Enter a valid email address"),
+  password: z.string().min(1, "Enter your password"),
+  next: z.string().optional(),
+  website: z.string().max(0).optional().or(z.literal("")),
+});
+
+export type SignUpInput = z.infer<typeof signUpSchema>;
+export type SignInInput = z.infer<typeof signInSchema>;
+
 /** A reusable trimmed-string helper */
 const str = (min: number, max: number, label: string) =>
   z

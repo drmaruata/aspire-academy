@@ -14,8 +14,8 @@ institute in Aizawl, Mizoram.
 | Fonts | `next/font` — Playfair Display + DM Sans |
 | CMS | **Sanity v5** (embedded Studio at `/studio`, GROQ + TypeGen, tag-based revalidation) |
 | Rich text | `@portabletext/react` via `next-sanity` |
-| Forms DB | **Supabase** (Phase 2 — `newsletter_subscribers`, `lead_submissions`) |
-| Auth / Payments | **Supabase Auth** + **Razorpay** *(wired up in Phase 4)* |
+| DB / Auth | **Supabase** — newsletter & leads (Phase 2), `profiles` + `enrollments` + `payment_events` (Phase 4) |
+| Payments | **Razorpay** — order create + signature verify + idempotent webhook (Phase 4) |
 | Email | **Resend** (Phase 2 — transactional + admin alerts) |
 | Validation | `zod` + native Server Actions (`useActionState`) |
 | Hosting | Vercel |
@@ -55,9 +55,23 @@ src/
     utils.ts            cn() class helper
     site.ts             Site-wide config (phones, emails, social, banner)
     data.ts             Static fallback content (used when Sanity isn't configured)
-    env.ts              Typed env loader + formsCapability() + isSanityConfigured()
+    env.ts              Typed env loader + capability checks (forms/sanity/auth/payments)
+    format.ts           formatINR()
+    enrollments.ts      Server-only — upsertEnrollment / listUserEnrollments / logPaymentEvent
+    auth/
+      user.ts           getCurrentUser / requireUser / getProfile / safeNextPath
+    supabase/
+      service.ts        Service-role admin client (RLS bypass)
+      server.ts         Cookie-bound client for RSC / actions
+      browser.ts        Anon client for Client Components
+      middleware.ts     Session-refresh helper (used by middleware.ts)
+    razorpay/
+      server.ts         Razorpay SDK factory
+      orders.ts         createCourseOrder()
+      signature.ts      verifyPaymentSignature / verifyWebhookSignature
+    actions/
+      auth.ts           Server actions: signUp / signIn / signOut
     schemas.ts          zod schemas (newsletter, lead)
-    supabase.ts         Server-only service-role client factory
     resend.ts           Server-only Resend client factory
     rate-limit.ts       In-memory sliding-window rate limiter
     request-context.ts  Server-action header helpers (IP, UA)
@@ -137,6 +151,14 @@ NEXT_PUBLIC_SANITY_DATASET=production
 NEXT_PUBLIC_SANITY_API_VERSION=2026-02-01
 SANITY_API_READ_TOKEN=           # only needed for draft preview
 SANITY_REVALIDATE_SECRET=        # shared with the Sanity webhook
+
+# ─── Phase 4 — Auth + Razorpay ───────────────────────────────
+NEXT_PUBLIC_SUPABASE_ANON_KEY=   # browser-side auth client
+NEXT_PUBLIC_SITE_URL=http://localhost:3100  # absolute URL for email callbacks
+RAZORPAY_KEY_ID=
+RAZORPAY_KEY_SECRET=
+RAZORPAY_WEBHOOK_SECRET=
+NEXT_PUBLIC_RAZORPAY_KEY_ID=     # mirror of RAZORPAY_KEY_ID for the modal
 
 # ─── Phase 4 — Auth + Payments (future) ──────────────────────
 # NEXT_PUBLIC_SUPABASE_ANON_KEY=
@@ -244,13 +266,80 @@ shape, so the site builds without `sanity.types.ts`.
 When no posts exist (or Sanity isn't configured) the blog index shows a
 friendly empty state with a link to `/studio`.
 
+## Phase 4 — Auth + Razorpay checkout
+
+End-to-end student enrollment flow, gracefully degrading to WhatsApp until
+Supabase Auth and Razorpay are both configured.
+
+```text
+Visitor clicks Enroll Now
+       │
+       ├─ checkout disabled?   ── ▶ WhatsApp
+       └─ checkout enabled?
+              │
+              ├─ /sign-in?next=/courses/<slug>/checkout  (when guest)
+              └─ /courses/<slug>/checkout
+                    │
+                    ├─ server creates Razorpay order
+                    ├─ <RazorpayCheckout> opens hosted modal (CC/UPI/Netbanking)
+                    └─ on success
+                          │
+                          ├─ POST /api/razorpay/verify  → HMAC verify + upsert
+                          └─ Razorpay → /api/razorpay/webhook (idempotent source of truth)
+
+Authenticated routes:
+  /dashboard            → list of enrollments + receipts
+  /sign-out (POST)      → clears the Supabase session
+  /auth/callback        → exchanges email-confirmation code for a session
+```
+
+**Auth UX**
+
+- Email + password via Supabase. Sign-up captures `full_name` + `phone`
+  into `auth.user_metadata`, mirrored into `profiles` via a trigger.
+- Email confirmations land at `/auth/callback?code=…&next=…` and bounce
+  the user to their original intent.
+- Middleware refreshes the access-token cookie on every request so SSR
+  and Server Actions always see the current session.
+
+**Razorpay specifics**
+
+- The amount comes from the `priceINR` field on the course (Sanity OR
+  static fallback). `priceINR = 0` → online checkout disabled, WhatsApp.
+- `/verify` re-fetches the order from Razorpay and matches `notes.user_id`
+  against the signed-in user before persisting — clients can never forge
+  the amount or attribute a payment to someone else.
+- `/webhook` is the source of truth and is idempotent on
+  `razorpay_order_id`. The webhook arrives even if the user closes the
+  tab; both routes converge on the same row.
+
+**Database** — see [`supabase/migrations/0002_auth_enrollments.sql`](./supabase/migrations/0002_auth_enrollments.sql)
+
+| Table | Purpose | RLS |
+| --- | --- | --- |
+| `profiles` | `full_name`, `phone` keyed by `auth.users.id` | owner read + update |
+| `enrollments` | One row per paid course (unique on `razorpay_order_id`) | owner read only |
+| `payment_events` | Append-only audit log of webhook events | service role only |
+
+**Setup**
+
+1. Provision Supabase + apply both migrations — see
+   [`supabase/README.md`](./supabase/README.md).
+2. Add Supabase URL/anon/service envs and Razorpay test keys to
+   `.env.local`.
+3. (Local dev) expose `http://localhost:3100/api/razorpay/webhook` with
+   `ngrok http 3100` (or `cloudflared`) and paste the public URL into the
+   Razorpay webhook config.
+4. Run `pnpm dev`, hit `/courses/combined-course/checkout`, sign up, and
+   pay with test card `4111 1111 1111 1111`.
+
 ## Roadmap
 
 - [x] **Phase 0** — Bootstrap Next.js 16 + Tailwind v4 + design tokens
 - [x] **Phase 1** — Static parity with `_reference/index.html`
 - [x] **Phase 2** — Wire newsletter + contact forms (Resend + Supabase)
 - [x] **Phase 3** — Sanity CMS for courses, testimonials, videos, resources, blog
-- [ ] **Phase 4** — Supabase Auth + Razorpay checkout + enrollment webhooks
-- [ ] **Phase 5** — Student dashboard + mock-test runner
-- [ ] **Phase 6** — Admin dashboard
+- [x] **Phase 4** — Supabase Auth + Razorpay checkout + enrollment webhooks
+- [ ] **Phase 5** — Student dashboard v2 (downloads, mock-test runner, progress)
+- [ ] **Phase 6** — Admin dashboard (lead/enrollment management, refunds)
 - [ ] **Phase 7** — English + Mizo (`next-intl`)

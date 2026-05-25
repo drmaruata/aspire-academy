@@ -29,8 +29,8 @@ export const course = defineType({
     }),
     defineField({
       name: "priceCurrent",
-      title: "Current price",
-      description: 'Display string — e.g. "₹45,000".',
+      title: "Current price (display)",
+      description: 'Shown to visitors — e.g. "₹45,000".',
       type: "string",
       validation: (rule) => rule.required(),
     }),
@@ -38,6 +38,15 @@ export const course = defineType({
       name: "priceOriginal",
       title: "Original (strike-through) price",
       type: "string",
+    }),
+    defineField({
+      name: "priceINR",
+      title: "Checkout amount (₹ INR)",
+      description:
+        "Integer rupees — the actual amount Razorpay will charge. Leave 0 to disable online checkout for this course (Enroll Now falls back to WhatsApp).",
+      type: "number",
+      initialValue: 0,
+      validation: (rule) => rule.integer().min(0),
     }),
     defineField({
       name: "duration",

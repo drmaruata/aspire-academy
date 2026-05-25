@@ -9,6 +9,8 @@ export type Course = {
   name: string;
   priceCurrent: string;
   priceOriginal?: string;
+  /** Integer rupees used by Razorpay. 0 means "use WhatsApp fallback". */
+  priceINR: number;
   features: string[];
   duration: string;
   featured?: boolean;
@@ -21,6 +23,7 @@ export const courses: Course[] = [
     name: "Prelims + Mains Complete",
     priceCurrent: "₹45,000",
     priceOriginal: "₹47,000",
+    priceINR: 45000,
     features: [
       "CSAT & General Studies (Full Syllabus)",
       "English – Essay & Comprehension Classes",
@@ -36,6 +39,7 @@ export const courses: Course[] = [
     name: "Combined Course",
     priceCurrent: "₹40,000",
     priceOriginal: "₹43,000",
+    priceINR: 40000,
     features: [
       "CSAT with Topic-wise Practice",
       "Static GK + Regular Chapter Tests",
@@ -52,6 +56,7 @@ export const courses: Course[] = [
     name: "Prelims Crash Course",
     priceCurrent: "₹20,000",
     priceOriginal: "₹22,000",
+    priceINR: 20000,
     features: [
       "Rapid Revision of All Prelims Topics",
       "Daily Full-Length Mock Tests",
@@ -232,11 +237,11 @@ export const whyItems: WhyItem[] = [
 
 export const navItems = [
   { label: "Home", href: "/" },
+  { label: "Courses", href: "#courses" },
   { label: "About Us", href: "#why" },
   { label: "Faculty", href: "#faculty" },
-  { label: "Courses", href: "#courses" },
-  { label: "Study Materials", href: "#resources" },
   { label: "Webinars", href: "#strategy" },
+  { label: "Study Materials", href: "#resources" },
   { label: "Contact", href: "#contact" },
 ] as const;
 

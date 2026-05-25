@@ -21,18 +21,26 @@ export function Footer() {
               href="/"
               className="group mb-5 inline-flex items-center gap-3 leading-none"
             >
-              <span className="relative grid h-[50px] w-[50px] place-items-center rounded-2xl border border-white/10 bg-white/[0.04] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-transform duration-300 ease-out group-hover:-translate-y-0.5">
+              <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full ring-2 ring-white/15 transition-all duration-300 ease-out group-hover:ring-white/30 group-hover:shadow-[0_0_0_4px_rgba(255,255,255,0.06)]">
                 <Image
                   src="/aspire-logo.png"
                   alt="Aspire Academy"
-                  width={48}
-                  height={48}
-                  sizes="48px"
-                  className="h-[40px] w-[40px] object-contain"
+                  width={44}
+                  height={44}
+                  sizes="44px"
+                  className="h-full w-full object-cover"
                 />
               </span>
-              <span className="font-serif text-[1.15rem] font-bold text-white">
-                {site.name}
+              <span className="flex items-center gap-2.5">
+                <span className="h-5 w-px bg-white/20" aria-hidden="true" />
+                <span className="flex flex-col leading-tight">
+                  <span className="font-serif text-[1.15rem] font-extrabold tracking-[0.01em] text-white">
+                    {site.name}
+                  </span>
+                  <span className="font-sans text-[0.68rem] italic tracking-wide text-white/50">
+                    by Chris Ralte
+                  </span>
+                </span>
               </span>
             </Link>
 

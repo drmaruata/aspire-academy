@@ -10,6 +10,10 @@ let _admin: SupabaseClient | null = null;
  *
  * Bypasses RLS — only call from server actions / route handlers, never
  * from a Client Component. Never expose the key with `NEXT_PUBLIC_`.
+ *
+ * Used by:
+ *   • Phase 2 forms (newsletter / lead inserts)
+ *   • Phase 4 Razorpay /verify and /webhook routes (enrollment writes)
  */
 export function getSupabaseAdmin(): SupabaseClient {
   if (_admin) return _admin;

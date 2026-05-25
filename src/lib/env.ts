@@ -9,7 +9,20 @@ const trimOrEmpty = (v: string | undefined) => (v ?? "").trim();
 
 export const env = {
   supabaseUrl: trimOrEmpty(process.env.NEXT_PUBLIC_SUPABASE_URL),
+  supabaseAnonKey: trimOrEmpty(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
   supabaseServiceRoleKey: trimOrEmpty(process.env.SUPABASE_SERVICE_ROLE_KEY),
+
+  /* ── Razorpay (Phase 4) ── */
+  razorpayKeyId: trimOrEmpty(process.env.RAZORPAY_KEY_ID),
+  razorpayKeySecret: trimOrEmpty(process.env.RAZORPAY_KEY_SECRET),
+  razorpayWebhookSecret: trimOrEmpty(process.env.RAZORPAY_WEBHOOK_SECRET),
+  /** Safe to expose in the browser — needed to open Razorpay's checkout modal. */
+  razorpayPublicKeyId: trimOrEmpty(process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID),
+
+  /** Public site origin — used to build absolute redirect URLs for OAuth / email callbacks. */
+  siteUrl:
+    trimOrEmpty(process.env.NEXT_PUBLIC_SITE_URL) ||
+    "http://localhost:3100",
 
   resendApiKey: trimOrEmpty(process.env.RESEND_API_KEY),
   emailFrom: trimOrEmpty(process.env.EMAIL_FROM) ||
@@ -62,4 +75,31 @@ export function formsCapability(): FormsCapability {
   if (hasDb && hasMail) return "live";
   if (env.isDev) return "stub";
   return "missing";
+}
+
+/**
+ * True when Supabase auth is wired up. Sign-in / sign-up pages and the
+ * dashboard need both the URL and the anon key (used by the browser /
+ * cookie-based clients to talk to Supabase).
+ */
+export function isAuthConfigured(): boolean {
+  return env.supabaseUrl.length > 0 && env.supabaseAnonKey.length > 0;
+}
+
+/**
+ * True when Razorpay is fully wired (server SDK + public key for the
+ * checkout modal). Webhook secret is checked separately by the webhook
+ * route — production deployments should set all four values.
+ */
+export function isPaymentsConfigured(): boolean {
+  return (
+    env.razorpayKeyId.length > 0 &&
+    env.razorpayKeySecret.length > 0 &&
+    (env.razorpayPublicKeyId || env.razorpayKeyId).length > 0
+  );
+}
+
+/** Public key id used by the browser. Falls back to the server key id. */
+export function razorpayBrowserKey(): string {
+  return env.razorpayPublicKeyId || env.razorpayKeyId;
 }

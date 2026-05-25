@@ -1,9 +1,15 @@
+import Link from "next/link";
 import { Check, Clock } from "lucide-react";
 import { courses as defaultCourses, type Course } from "@/lib/data";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { isAuthConfigured, isPaymentsConfigured } from "@/lib/env";
 
 export function Courses({ courses = defaultCourses }: { courses?: Course[] }) {
+  // Checkout is reachable when payments are wired up AND auth is wired up.
+  // Auth is reachable when configured (we'll redirect anon users to /sign-in).
+  const checkoutEnabled = isAuthConfigured() && isPaymentsConfigured();
+
   return (
     <section id="courses" className="section-y bg-cream">
       <div className="container-page">
@@ -97,24 +103,49 @@ export function Courses({ courses = defaultCourses }: { courses?: Course[] }) {
                   {course.duration}
                 </div>
 
-                <a
-                  href={site.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    "mt-auto inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-[0.95rem] font-semibold text-white transition-all hover:-translate-y-0.5",
-                    course.featured
-                      ? "bg-gold shadow-[0_4px_16px_rgba(201,144,28,0.35)] hover:bg-gold-light hover:shadow-[0_8px_24px_rgba(201,144,28,0.45)]"
-                      : "bg-forest shadow-[0_4px_16px_rgba(26,60,52,0.25)] hover:bg-forest-mid"
-                  )}
-                >
-                  Enroll Now
-                </a>
+                <EnrollButton course={course} checkoutEnabled={checkoutEnabled} />
               </div>
             </div>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function EnrollButton({
+  course,
+  checkoutEnabled,
+}: {
+  course: Course;
+  checkoutEnabled: boolean;
+}) {
+  const baseClass = cn(
+    "mt-auto inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-[0.95rem] font-semibold text-white transition-all hover:-translate-y-0.5",
+    course.featured
+      ? "bg-gold shadow-[0_4px_16px_rgba(201,144,28,0.35)] hover:bg-gold-light hover:shadow-[0_8px_24px_rgba(201,144,28,0.45)]"
+      : "bg-forest shadow-[0_4px_16px_rgba(26,60,52,0.25)] hover:bg-forest-mid"
+  );
+
+  // When checkout + a real price exist, route to the checkout page.
+  if (checkoutEnabled && course.priceINR > 0) {
+    return (
+      <Link href={`/courses/${course.slug}/checkout`} className={baseClass}>
+        Enroll Now
+      </Link>
+    );
+  }
+
+  // Fall back to WhatsApp for everything else (no payments configured,
+  // or the course is set up as "contact-us-for-pricing").
+  return (
+    <a
+      href={site.whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={baseClass}
+    >
+      Enroll Now
+    </a>
   );
 }

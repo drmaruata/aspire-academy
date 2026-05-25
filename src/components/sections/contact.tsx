@@ -223,28 +223,6 @@ export function Contact() {
         </div>
       </div>
 
-      <style>{`
-        .input {
-          padding: 0.75rem 1rem;
-          border: 2px solid var(--color-cream-2);
-          border-radius: 10px;
-          font-family: var(--font-sans);
-          font-size: 0.92rem;
-          color: var(--color-charcoal);
-          outline: none;
-          transition: border-color 0.2s, box-shadow 0.2s;
-          background: var(--color-cream);
-          width: 100%;
-        }
-        .input:focus {
-          border-color: var(--color-forest);
-          box-shadow: 0 0 0 3px rgba(26,60,52,0.12);
-        }
-        .input[aria-invalid="true"] {
-          border-color: #dc2626;
-          background: #fef2f2;
-        }
-      `}</style>
     </section>
   );
 }

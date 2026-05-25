@@ -103,6 +103,27 @@
   }
 }
 
+@utility input {
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--color-cream-2);
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  color: var(--color-charcoal);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: var(--color-cream);
+  width: 100%;
+
+  &:focus {
+    border-color: var(--color-forest);
+    box-shadow: 0 0 0 3px rgba(26, 60, 52, 0.12);
+  }
+  &[aria-invalid="true"] {
+    border-color: #dc2626;
+  }
+}
+
 @utility text-balance {
   text-wrap: balance;
 }

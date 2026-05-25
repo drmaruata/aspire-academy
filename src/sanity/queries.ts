@@ -10,6 +10,22 @@ export const COURSES_QUERY = defineQuery(/* groq */ `
     category,
     priceCurrent,
     priceOriginal,
+    priceINR,
+    duration,
+    features,
+    featured
+  }
+`);
+
+export const COURSE_BY_SLUG_QUERY = defineQuery(/* groq */ `
+  *[_type == "course" && slug.current == $slug][0] {
+    _id,
+    "slug": slug.current,
+    name,
+    category,
+    priceCurrent,
+    priceOriginal,
+    priceINR,
     duration,
     features,
     featured
