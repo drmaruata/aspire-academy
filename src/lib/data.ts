@@ -9,8 +9,6 @@ export type Course = {
   name: string;
   priceCurrent: string;
   priceOriginal?: string;
-  /** Integer rupees used by Razorpay. 0 means "use WhatsApp fallback". */
-  priceINR: number;
   features: string[];
   duration: string;
   featured?: boolean;
