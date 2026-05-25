@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN TOKENS (ported from _reference/index.html)
+============================================ */
+@theme {
+  --color-forest: #1a3c34;
+  --color-forest-dark: #0e2420;
+  --color-forest-mid: #254d42;
+  --color-forest-light: #2e6b5a;
+  --color-gold: #c9901c;
+  --color-gold-light: #e2ae44;
+  --color-gold-pale: #f5e8c8;
+  --color-cream: #faf8f3;
+  --color-cream-2: #f2ede2;
+  --color-charcoal: #222b26;
+  --color-text: #3a4a40;
+  --color-text-light: #6b7e72;
+
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), "Playfair Display", ui-serif, Georgia, serif;
+
+  --shadow-soft: 0 4px 24px rgba(14, 36, 32, 0.1);
+  --shadow-lifted: 0 12px 48px rgba(14, 36, 32, 0.16);
+
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   BASE
+============================================ */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-cream);
+    color: var(--color-text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  ul {
+    list-style: none;
+  }
+  h1,
+  h2,
+  h3,
+  .h1,
+  .h2,
+  .h3 {
+    font-family: var(--font-serif);
+    line-height: 1.2;
+    color: var(--color-forest-dark);
+  }
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 900;
+  }
+  h2 {
+    font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+  }
+  h3 {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 600;
+  }
+  p {
+    line-height: 1.75;
+  }
+  ::selection {
+    background: var(--color-gold-pale);
+    color: var(--color-forest-dark);
+  }
+}
+
+/* ============================================
+   CUSTOM UTILITIES
+============================================ */
+@utility container-page {
+  width: min(1160px, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+@utility section-y {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  @media (max-width: 768px) {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+/* ============================================
+   COMPONENTS
+============================================ */
+@layer components {
+  .label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-gold);
+    font-family: var(--font-sans);
+  }
+  .section-intro {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+  .section-intro p {
+    color: var(--color-text-light);
+    font-size: 1.05rem;
+  }
+  .section-divider {
+    width: 60px;
+    height: 4px;
+    background: var(--color-gold);
+    border-radius: 2px;
+    margin: 1rem auto 2rem;
+  }
+  .section-divider.left {
+    margin-left: 0;
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+============================================ */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.7);
+  }
+}
+
+@keyframes slide-bg {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+@keyframes fab-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.dot-pulse::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--color-gold-light);
+  animation: pulse-dot 2s infinite;
+  display: inline-block;
+}
+
+/* Scroll reveal */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s ease;
+  will-change: opacity, transform;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up.d1 {
+  transition-delay: 0.1s;
+}
+.fade-up.d2 {
+  transition-delay: 0.2s;
+}
+.fade-up.d3 {
+  transition-delay: 0.3s;
+}
+.fade-up.d4 {
+  transition-delay: 0.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

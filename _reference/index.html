@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Aspire Academy Mizo – Premier coaching center for Mizoram Civil Services (MPSC) in Aizawl. Expert faculty, comprehensive study materials, and proven results."/>
+<title>Aspire Academy Mizo | MPSC Civil Services Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+/* ============================================
+   DESIGN TOKENS
+============================================ */
+:root {
+  --forest:      #1A3C34;
+  --forest-dark: #0E2420;
+  --forest-mid:  #254D42;
+  --forest-light:#2E6B5A;
+  --gold:        #C9901C;
+  --gold-light:  #E2AE44;
+  --gold-pale:   #F5E8C8;
+  --cream:       #FAF8F3;
+  --cream-2:     #F2EDE2;
+  --charcoal:    #222B26;
+  --text:        #3A4A40;
+  --text-light:  #6B7E72;
+  --white:       #FFFFFF;
+  --radius:      12px;
+  --radius-lg:   20px;
+  --shadow:      0 4px 24px rgba(14,36,32,0.10);
+  --shadow-lg:   0 12px 48px rgba(14,36,32,0.16);
+  --transition:  0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ============================================
+   RESET & BASE
+============================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+/* ============================================
+   TYPOGRAPHY
+============================================ */
+.serif{font-family:'Playfair Display',serif}
+h1,h2,h3,.h1,.h2,.h3{font-family:'Playfair Display',serif;line-height:1.2;color:var(--forest-dark)}
+h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900}
+h2{font-size:clamp(1.7rem,3.5vw,2.8rem);font-weight:700}
+h3{font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:600}
+p{line-height:1.75}
+
+.label{
+  font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;
+  font-weight:600;color:var(--gold);font-family:'DM Sans',sans-serif;
+}
+.section-intro{
+  max-width:600px;margin:0 auto 3rem;text-align:center;
+}
+.section-intro p{color:var(--text-light);font-size:1.05rem}
+
+/* ============================================
+   LAYOUT
+============================================ */
+.container{width:min(1160px,calc(100% - 2.5rem));margin-inline:auto}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+section{padding:5rem 0}
+@media(max-width:768px){
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  section{padding:3.5rem 0}
+}
+@media(min-width:769px) and (max-width:1024px){
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ============================================
+   BUTTONS
+============================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.75rem 1.8rem;border-radius:50px;font-weight:600;
+  font-size:0.95rem;transition:var(--transition);white-space:nowrap;
+}
+.btn-primary{
+  background:var(--gold);color:var(--white);
+  box-shadow:0 4px 16px rgba(201,144,28,0.35);
+}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,144,28,0.45)}
+.btn-outline{
+  background:transparent;color:var(--white);
+  border:2px solid rgba(255,255,255,0.55);backdrop-filter:blur(4px);
+}
+.btn-outline:hover{background:rgba(255,255,255,0.12);border-color:var(--white)}
+.btn-green{
+  background:var(--forest);color:var(--white);
+  box-shadow:0 4px 16px rgba(26,60,52,0.25);
+}
+.btn-green:hover{background:var(--forest-mid);transform:translateY(-2px)}
+.btn-ghost{color:var(--forest);font-weight:600;font-size:0.95rem;
+  display:inline-flex;align-items:center;gap:0.4rem;transition:var(--transition)}
+.btn-ghost:hover{color:var(--gold);gap:0.65rem}
+.btn svg{width:18px;height:18px;flex-shrink:0}
+
+/* ============================================
+   TOP BAR
+============================================ */
+#topbar{
+  background:var(--forest-dark);color:rgba(255,255,255,0.75);
+  font-size:0.82rem;padding:0.55rem 0;
+}
+.topbar-inner{
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:0.4rem;
+}
+.topbar-contact{display:flex;gap:1.5rem;flex-wrap:wrap}
+.topbar-contact a{display:flex;align-items:center;gap:0.35rem;transition:color 0.2s}
+.topbar-contact a:hover{color:var(--gold-light)}
+.topbar-social{display:flex;gap:0.75rem}
+.topbar-social a{
+  width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.1);
+  display:grid;place-items:center;transition:var(--transition);
+}
+.topbar-social a:hover{background:var(--gold)}
+.topbar-social svg{width:13px;height:13px;fill:currentColor}
+
+/* ============================================
+   NAVBAR
+============================================ */
+#navbar{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(250,248,243,0.95);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(26,60,52,0.1);
+  transition:box-shadow 0.3s;
+}
+#navbar.scrolled{box-shadow:0 4px 32px rgba(14,36,32,0.12)}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.9rem 0;gap:1rem;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:0.75rem;
+  font-family:'Playfair Display',serif;font-weight:900;font-size:1.35rem;
+  color:var(--forest-dark);line-height:1;
+}
+.nav-logo .logo-icon{
+  width:46px;height:46px;border-radius:12px;
+  background:linear-gradient(135deg,var(--forest) 0%,var(--forest-light) 100%);
+  display:grid;place-items:center;flex-shrink:0;
+  box-shadow:0 4px 12px rgba(26,60,52,0.30);
+}
+.nav-logo .logo-icon svg{width:26px;height:26px;fill:var(--white)}
+.logo-sub{font-size:0.7rem;font-family:'DM Sans',sans-serif;font-weight:500;
+  color:var(--text-light);letter-spacing:0.05em;display:block;margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:0.25rem}
+.nav-links a{
+  padding:0.5rem 0.85rem;border-radius:8px;font-weight:500;font-size:0.92rem;
+  color:var(--text);transition:var(--transition);position:relative;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--forest);background:rgba(26,60,52,0.07)}
+.nav-cta{display:flex;align-items:center;gap:0.75rem}
+.hamburger{
+  display:none;width:38px;height:38px;border-radius:8px;
+  background:var(--forest);color:var(--white);
+  flex-direction:column;justify-content:center;align-items:center;gap:5px;
+}
+.hamburger span{width:18px;height:2px;background:currentColor;border-radius:2px;transition:var(--transition)}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{
+  display:none;position:fixed;inset:0;top:0;background:var(--white);
+  z-index:999;padding:2rem;flex-direction:column;gap:0.5rem;
+  overflow-y:auto;transform:translateX(100%);transition:transform 0.35s ease;
+}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{
+  padding:1rem 1.2rem;border-radius:10px;font-size:1.05rem;font-weight:500;
+  color:var(--charcoal);border-bottom:1px solid var(--cream-2);
+  display:block;transition:var(--transition);
+}
+.mobile-menu a:hover{background:var(--cream-2);color:var(--forest)}
+.mobile-menu-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid var(--cream-2);
+}
+.close-btn{
+  width:36px;height:36px;border-radius:8px;background:var(--cream-2);
+  display:grid;place-items:center;cursor:pointer;font-size:1.2rem;
+}
+@media(max-width:900px){
+  .nav-links,.nav-cta .btn-primary{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{display:flex}
+}
+
+/* ============================================
+   HERO
+============================================ */
+#hero{
+  position:relative;overflow:hidden;
+  background:var(--forest-dark);padding:0;min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 65% 45%,rgba(46,107,90,0.35) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 40% at 20% 70%,rgba(201,144,28,0.12) 0%,transparent 60%),
+    linear-gradient(160deg,#0E2420 0%,#1A3C34 50%,#0E2420 100%);
+}
+.hero-pattern{
+  position:absolute;inset:0;opacity:0.04;
+  background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,1) 40px),
+    repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,1) 40px);
+}
+.hero-inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+  padding:6rem 0 4rem;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(201,144,28,0.15);border:1px solid rgba(201,144,28,0.35);
+  color:var(--gold-light);padding:0.4rem 1rem;border-radius:50px;
+  font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  margin-bottom:1.5rem;width:fit-content;
+}
+.hero-badge::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--gold-light);animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.7)}}
+.hero-title{
+  color:var(--white);font-size:clamp(2.4rem,5vw,4rem);
+  line-height:1.12;margin-bottom:1.5rem;
+}
+.hero-title em{font-style:italic;color:var(--gold-light)}
+.hero-desc{
+  color:rgba(255,255,255,0.7);font-size:1.1rem;
+  margin-bottom:2.25rem;max-width:500px;
+}
+.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.hero-stats{
+  display:flex;gap:2rem;flex-wrap:wrap;padding-top:2rem;
+  border-top:1px solid rgba(255,255,255,0.12);
+}
+.stat{text-align:left}
+.stat-num{
+  font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;
+  color:var(--white);line-height:1;
+}
+.stat-num span{color:var(--gold-light)}
+.stat-label{font-size:0.8rem;color:rgba(255,255,255,0.55);margin-top:0.25rem;letter-spacing:0.03em}
+.hero-visual{
+  display:flex;flex-direction:column;gap:1rem;position:relative;
+}
+.hero-card{
+  background:rgba(255,255,255,0.06);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);
+  padding:1.5rem;transition:var(--transition);
+}
+.hero-card:hover{background:rgba(255,255,255,0.09);transform:translateY(-3px)}
+.hero-card-main{flex:1}
+.hero-card-icon{
+  width:44px;height:44px;border-radius:10px;
+  background:var(--gold);display:grid;place-items:center;margin-bottom:0.9rem;
+}
+.hero-card-icon svg{width:22px;height:22px;fill:var(--white)}
+.hero-card h3{color:var(--white);font-size:1.1rem;margin-bottom:0.4rem}
+.hero-card p{color:rgba(255,255,255,0.6);font-size:0.88rem;line-height:1.5}
+.hero-cards-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.hero-admission{
+  background:linear-gradient(135deg,var(--gold) 0%,#E8B840 100%);
+  border:none;text-align:center;
+}
+.hero-admission h3{color:var(--white);font-size:0.95rem;margin-bottom:0.3rem}
+.hero-admission .big{
+  font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;
+  color:var(--white);display:block;
+}
+.hero-admission p{color:rgba(255,255,255,0.8);font-size:0.82rem}
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;padding:5rem 0 3rem}
+  .hero-visual{display:none}
+  .hero-stats{gap:1.5rem}
+}
+
+/* ============================================
+   QUICK LINKS
+============================================ */
+#quicklinks{
+  background:var(--white);padding:2.5rem 0;
+  border-bottom:1px solid var(--cream-2);
+}
+.quicklinks-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+}
+.qlink{
+  display:flex;flex-direction:column;align-items:center;
+  gap:0.75rem;padding:1.5rem 1rem;border-radius:var(--radius);
+  background:var(--cream);border:2px solid transparent;
+  text-align:center;transition:var(--transition);cursor:pointer;
+}
+.qlink:hover{
+  border-color:var(--gold);background:var(--gold-pale);
+  transform:translateY(-4px);box-shadow:var(--shadow);
+}
+.qlink-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:var(--forest);display:grid;place-items:center;
+  box-shadow:0 4px 12px rgba(26,60,52,0.25);transition:var(--transition);
+}
+.qlink:hover .qlink-icon{background:var(--gold)}
+.qlink-icon svg{width:24px;height:24px;fill:var(--white)}
+.qlink span{font-weight:600;font-size:0.9rem;color:var(--charcoal)}
+@media(max-width:768px){.quicklinks-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ============================================
+   ABOUT STRIP
+============================================ */
+#about-strip{
+  background:var(--forest);padding:3rem 0;
+}
+.about-strip-inner{
+  display:flex;align-items:center;gap:3rem;flex-wrap:wrap;
+  justify-content:space-between;
+}
+.about-strip-text h2{
+  color:var(--white);font-size:clamp(1.4rem,3vw,2rem);margin-bottom:0.75rem;
+}
+.about-strip-text h2 em{font-style:italic;color:var(--gold-light)}
+.about-strip-text p{color:rgba(255,255,255,0.7);max-width:500px;font-size:0.97rem}
+.about-strip-features{
+  display:flex;gap:1.5rem;flex-wrap:wrap;
+}
+.strip-feat{
+  display:flex;align-items:center;gap:0.6rem;
+  color:rgba(255,255,255,0.85);font-size:0.9rem;font-weight:500;
+}
+.strip-feat::before{
+  content:'';width:8px;height:8px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+}
+
+/* ============================================
+   COURSES
+============================================ */
+#courses{background:var(--cream)}
+.courses-tag{
+  display:inline-block;background:var(--gold-pale);color:var(--gold);
+  font-weight:700;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;
+  padding:0.3rem 0.9rem;border-radius:50px;margin-bottom:0.75rem;
+}
+.course-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;margin-top:2.5rem;
+}
+@media(max-width:900px){.course-cards{grid-template-columns:1fr}}
+.course-card{
+  background:var(--white);border-radius:var(--radius-lg);
+  overflow:hidden;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;
+  transition:var(--transition);border:2px solid transparent;
+}
+.course-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--gold)}
+.course-card.featured{
+  border-color:var(--forest);
+  position:relative;
+}
+.course-card.featured::before{
+  content:'Most Popular';
+  position:absolute;top:1rem;right:1rem;
+  background:var(--forest);color:var(--white);
+  font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.3rem 0.75rem;border-radius:50px;
+}
+.course-header{
+  padding:2rem 1.75rem 1.5rem;
+  background:linear-gradient(135deg,var(--forest-dark) 0%,var(--forest) 100%);
+}
+.course-card.featured .course-header{
+  background:linear-gradient(135deg,var(--forest) 0%,var(--forest-light) 100%);
+}
+.course-cat{
+  font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--gold-light);margin-bottom:0.5rem;
+}
+.course-name{
+  font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;
+  color:var(--white);margin-bottom:0.75rem;
+}
+.course-price{
+  display:flex;align-items:baseline;gap:0.6rem;
+}
+.course-price .current{
+  font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;
+  color:var(--gold-light);
+}
+.course-price .original{
+  font-size:1rem;color:rgba(255,255,255,0.45);text-decoration:line-through;
+}
+.course-body{padding:1.75rem}
+.course-features{display:flex;flex-direction:column;gap:0.65rem;margin-bottom:1.75rem}
+.course-feat{
+  display:flex;align-items:flex-start;gap:0.65rem;
+  font-size:0.9rem;color:var(--text);
+}
+.course-feat svg{
+  width:16px;height:16px;flex-shrink:0;margin-top:2px;
+  fill:var(--forest-light);
+}
+.course-duration{
+  display:flex;align-items:center;gap:0.5rem;
+  font-size:0.82rem;color:var(--text-light);
+  padding-top:1rem;border-top:1px solid var(--cream-2);margin-bottom:1.5rem;
+}
+.course-duration svg{width:15px;height:15px;fill:var(--text-light)}
+
+/* ============================================
+   WHY CHOOSE
+============================================ */
+#why{background:var(--white)}
+.why-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
+}
+.why-visual{position:relative}
+.why-img-wrapper{
+  border-radius:var(--radius-lg);overflow:hidden;
+  background:linear-gradient(135deg,var(--forest) 0%,var(--forest-dark) 100%);
+  aspect-ratio:4/5;position:relative;
+}
+.why-img-pattern{
+  position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,0.03) 0px,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 20px);
+}
+.why-img-content{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:2rem;
+}
+.why-stat-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.why-stat-card{
+  background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius);
+  padding:1.25rem;text-align:center;
+}
+.why-stat-card .num{
+  font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;
+  color:var(--white);display:block;
+}
+.why-stat-card .num em{font-style:normal;color:var(--gold-light)}
+.why-stat-card .lbl{font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.3}
+.why-floating{
+  position:absolute;top:-1.5rem;right:-1.5rem;
+  background:var(--gold);color:var(--white);border-radius:var(--radius);
+  padding:1.25rem;text-align:center;box-shadow:var(--shadow-lg);
+  min-width:130px;
+}
+.why-floating .num{
+  font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;display:block;
+}
+.why-floating .lbl{font-size:0.78rem;opacity:0.85;line-height:1.3}
+.why-content{padding-right:1rem}
+.why-items{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
+.why-item{
+  display:flex;gap:1.25rem;align-items:flex-start;
+  padding:1.25rem;border-radius:var(--radius);
+  background:var(--cream);border:1px solid var(--cream-2);
+  transition:var(--transition);
+}
+.why-item:hover{border-color:var(--gold);background:var(--gold-pale);transform:translateX(4px)}
+.why-item-icon{
+  width:44px;height:44px;border-radius:10px;
+  background:var(--forest);display:grid;place-items:center;flex-shrink:0;
+}
+.why-item-icon svg{width:20px;height:20px;fill:var(--white)}
+.why-item h4{font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.3rem}
+.why-item p{font-size:0.87rem;color:var(--text-light);line-height:1.55}
+@media(max-width:768px){
+  .why-grid{grid-template-columns:1fr}
+  .why-visual{display:none}
+  .why-content{padding-right:0}
+}
+
+/* ============================================
+   FEATURES BAND
+============================================ */
+#features-band{
+  background:var(--cream-2);padding:2.5rem 0;
+}
+.features-band-inner{
+  display:flex;gap:0;flex-wrap:wrap;
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.feat-band-item{
+  flex:1;min-width:200px;
+  padding:2rem 1.5rem;background:var(--white);text-align:center;
+  border-right:1px solid var(--cream-2);transition:var(--transition);
+}
+.feat-band-item:last-child{border-right:none}
+.feat-band-item:hover{background:var(--forest);color:var(--white)}
+.feat-band-icon{
+  font-size:2rem;margin-bottom:0.6rem;display:block;
+}
+.feat-band-num{
+  font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;
+  color:var(--forest);display:block;margin-bottom:0.3rem;transition:color 0.3s;
+}
+.feat-band-item:hover .feat-band-num{color:var(--gold-light)}
+.feat-band-label{font-size:0.85rem;color:var(--text-light);font-weight:500;transition:color 0.3s}
+.feat-band-item:hover .feat-band-label{color:rgba(255,255,255,0.75)}
+
+/* ============================================
+   TESTIMONIALS
+============================================ */
+#testimonials{background:var(--cream)}
+.testimonials-subtitle{
+  font-size:0.95rem;color:var(--text-light);text-align:center;
+  margin-top:-1.5rem;margin-bottom:2.5rem;
+}
+.testimonials-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.25rem;
+}
+@media(max-width:900px){.testimonials-grid{grid-template-columns:1fr}}
+.testimonial-card{
+  background:var(--white);border-radius:var(--radius-lg);
+  padding:1.75rem;box-shadow:var(--shadow);
+  border:1px solid var(--cream-2);transition:var(--transition);
+  display:flex;flex-direction:column;
+}
+.testimonial-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--gold)}
+.testimonial-stars{display:flex;gap:3px;margin-bottom:1rem}
+.testimonial-stars span{color:var(--gold);font-size:1rem}
+.testimonial-text{
+  font-size:0.93rem;color:var(--text);font-style:italic;
+  line-height:1.7;flex:1;margin-bottom:1.25rem;
+}
+.testimonial-text::before{content:'\201C';font-family:'Playfair Display',serif;
+  font-size:3rem;color:var(--gold-pale);line-height:0;vertical-align:-0.75rem;margin-right:0.1rem}
+.testimonial-author{
+  display:flex;align-items:center;gap:0.85rem;
+  padding-top:1.25rem;border-top:1px solid var(--cream-2);
+}
+.author-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--forest) 0%,var(--forest-light) 100%);
+  display:grid;place-items:center;flex-shrink:0;
+  font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);
+}
+.author-name{font-weight:600;font-size:0.92rem;color:var(--charcoal)}
+.author-rank{font-size:0.8rem;color:var(--gold);font-weight:600}
+
+/* ============================================
+   STUDY RESOURCES
+============================================ */
+#resources{background:var(--forest-dark);padding:4.5rem 0}
+.resources-header{text-align:center;margin-bottom:3rem}
+.resources-header h2{color:var(--white)}
+.resources-header p{color:rgba(255,255,255,0.6);margin-top:0.75rem}
+.resources-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+}
+@media(max-width:900px){.resources-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.resources-grid{grid-template-columns:1fr}}
+.resource-card{
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius);padding:1.5rem;
+  transition:var(--transition);cursor:pointer;
+}
+.resource-card:hover{
+  background:rgba(255,255,255,0.1);border-color:rgba(201,144,28,0.4);
+  transform:translateY(-4px);
+}
+.resource-icon{
+  width:42px;height:42px;border-radius:10px;
+  background:rgba(201,144,28,0.2);display:grid;place-items:center;
+  margin-bottom:0.9rem;
+}
+.resource-icon svg{width:20px;height:20px;fill:var(--gold-light)}
+.resource-card h4{color:var(--white);font-size:0.95rem;margin-bottom:0.4rem}
+.resource-card p{color:rgba(255,255,255,0.5);font-size:0.82rem;line-height:1.5}
+.resource-count{
+  margin-top:0.75rem;font-size:0.75rem;color:var(--gold-light);font-weight:600;
+  letter-spacing:0.05em;
+}
+
+/* ============================================
+   WEBINAR / STRATEGY
+============================================ */
+#strategy{background:var(--white)}
+.strategy-inner{
+  display:grid;grid-template-columns:5fr 4fr;gap:4rem;align-items:center;
+}
+.strategy-list{
+  display:flex;flex-direction:column;gap:1rem;margin-top:2rem;
+}
+.strategy-item{
+  display:flex;gap:1rem;padding:1.25rem;border-radius:var(--radius);
+  background:var(--cream);border-left:4px solid transparent;
+  transition:var(--transition);
+}
+.strategy-item:hover{border-left-color:var(--gold);background:var(--gold-pale)}
+.strategy-num{
+  font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;
+  color:var(--gold-pale);line-height:1;flex-shrink:0;min-width:2rem;
+}
+.strategy-item:hover .strategy-num{color:var(--gold)}
+.strategy-item h4{font-weight:600;margin-bottom:0.3rem;font-size:0.95rem}
+.strategy-item p{font-size:0.85rem;color:var(--text-light);line-height:1.55}
+.strategy-cta-box{
+  background:linear-gradient(160deg,var(--forest) 0%,var(--forest-dark) 100%);
+  border-radius:var(--radius-lg);padding:2.5rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.strategy-cta-box::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:120px;height:120px;border-radius:50%;
+  background:rgba(201,144,28,0.15);
+}
+.strategy-cta-box h3{
+  color:var(--white);font-size:1.5rem;margin-bottom:0.75rem;
+  position:relative;z-index:1;
+}
+.strategy-cta-box p{color:rgba(255,255,255,0.65);font-size:0.9rem;margin-bottom:2rem;position:relative;z-index:1}
+.webinar-details{
+  display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;
+  position:relative;z-index:1;
+}
+.webinar-detail{
+  display:flex;align-items:center;gap:0.6rem;
+  color:rgba(255,255,255,0.8);font-size:0.88rem;
+}
+.webinar-detail svg{width:16px;height:16px;fill:var(--gold-light);flex-shrink:0}
+@media(max-width:768px){
+  .strategy-inner{grid-template-columns:1fr}
+}
+
+/* ============================================
+   VIDEO SECTION
+============================================ */
+#videos{background:var(--cream-2)}
+.video-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;
+}
+@media(max-width:900px){.video-grid{grid-template-columns:1fr}}
+.video-card{
+  background:var(--white);border-radius:var(--radius-lg);
+  overflow:hidden;box-shadow:var(--shadow);transition:var(--transition);
+}
+.video-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.video-thumb{
+  aspect-ratio:16/9;
+  background:linear-gradient(135deg,var(--forest) 0%,var(--forest-mid) 100%);
+  position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer;
+  overflow:hidden;
+}
+.video-thumb .play-btn{
+  width:54px;height:54px;border-radius:50%;
+  background:var(--white);display:grid;place-items:center;
+  box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:var(--transition);
+}
+.video-thumb:hover .play-btn{transform:scale(1.1);background:var(--gold)}
+.play-btn svg{width:20px;height:20px;fill:var(--forest);margin-left:3px}
+.video-thumb:hover .play-btn svg{fill:var(--white)}
+.video-tag{
+  position:absolute;top:0.75rem;left:0.75rem;
+  background:var(--gold);color:var(--white);
+  font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.25rem 0.65rem;border-radius:50px;
+}
+.video-duration{
+  position:absolute;bottom:0.65rem;right:0.75rem;
+  background:rgba(0,0,0,0.65);color:var(--white);
+  font-size:0.72rem;padding:0.2rem 0.5rem;border-radius:4px;
+}
+.video-body{padding:1.25rem}
+.video-body h4{font-size:0.97rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;line-height:1.4}
+.video-body p{font-size:0.82rem;color:var(--text-light)}
+.video-pattern{
+  position:absolute;inset:0;
+  background-image:repeating-linear-gradient(30deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 20px);
+}
+
+/* ============================================
+   NEWSLETTER
+============================================ */
+#newsletter{
+  background:linear-gradient(135deg,var(--forest) 0%,var(--forest-dark) 100%);
+  padding:4rem 0;position:relative;overflow:hidden;
+}
+#newsletter::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:400px;height:400px;border-radius:50%;
+  background:rgba(201,144,28,0.08);
+}
+#newsletter::after{
+  content:'';position:absolute;bottom:-60px;left:-60px;
+  width:300px;height:300px;border-radius:50%;
+  background:rgba(255,255,255,0.03);
+}
+.newsletter-inner{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+}
+.newsletter-text h2{color:var(--white);margin-bottom:0.75rem}
+.newsletter-text p{color:rgba(255,255,255,0.65);font-size:0.97rem}
+.newsletter-form{
+  display:flex;flex-direction:column;gap:1rem;
+}
+.newsletter-form-row{display:flex;gap:0.75rem}
+.newsletter-input{
+  flex:1;padding:0.85rem 1.25rem;border-radius:50px;
+  border:2px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.1);
+  color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.95rem;
+  backdrop-filter:blur(4px);outline:none;transition:border-color 0.3s;
+}
+.newsletter-input::placeholder{color:rgba(255,255,255,0.45)}
+.newsletter-input:focus{border-color:var(--gold-light)}
+.newsletter-note{font-size:0.78rem;color:rgba(255,255,255,0.4)}
+@media(max-width:768px){
+  .newsletter-inner{grid-template-columns:1fr}
+  .newsletter-form-row{flex-direction:column}
+}
+
+/* ============================================
+   CONTACT SECTION
+============================================ */
+#contact{background:var(--cream)}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;
+}
+.contact-info{padding-right:1rem}
+.contact-info h2{margin-bottom:1rem}
+.contact-info p{color:var(--text-light);font-size:0.97rem;margin-bottom:2rem}
+.contact-items{display:flex;flex-direction:column;gap:1.25rem;margin-bottom:2rem}
+.contact-item{
+  display:flex;gap:1rem;align-items:flex-start;
+}
+.contact-item-icon{
+  width:42px;height:42px;border-radius:10px;background:var(--forest);
+  display:grid;place-items:center;flex-shrink:0;
+}
+.contact-item-icon svg{width:18px;height:18px;fill:var(--white)}
+.contact-item-text strong{display:block;font-weight:600;margin-bottom:0.2rem;font-size:0.9rem}
+.contact-item-text a,.contact-item-text span{font-size:0.9rem;color:var(--text-light)}
+.contact-item-text a:hover{color:var(--forest)}
+.contact-form{
+  background:var(--white);border-radius:var(--radius-lg);
+  padding:2.5rem;box-shadow:var(--shadow);
+}
+.contact-form h3{margin-bottom:1.5rem;font-size:1.3rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+.form-group label{font-size:0.85rem;font-weight:600;color:var(--charcoal)}
+.form-input{
+  padding:0.75rem 1rem;border:2px solid var(--cream-2);border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:0.92rem;color:var(--charcoal);
+  outline:none;transition:border-color 0.3s;background:var(--cream);
+}
+.form-input:focus{border-color:var(--forest)}
+textarea.form-input{resize:vertical;min-height:120px}
+@media(max-width:768px){
+  .contact-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
+
+/* ============================================
+   FOOTER
+============================================ */
+#footer{
+  background:var(--charcoal);color:rgba(255,255,255,0.75);
+  padding:4rem 0 0;
+}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;
+  padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.footer-brand .logo{
+  display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;
+}
+.footer-brand .logo-box{
+  width:42px;height:42px;border-radius:10px;
+  background:linear-gradient(135deg,var(--forest) 0%,var(--forest-light) 100%);
+  display:grid;place-items:center;
+}
+.footer-brand .logo-box svg{width:22px;height:22px;fill:var(--white)}
+.footer-brand .logo-text{
+  font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;
+  color:var(--white);line-height:1.2;
+}
+.footer-brand .logo-text small{
+  display:block;font-family:'DM Sans',sans-serif;
+  font-size:0.68rem;font-weight:400;color:rgba(255,255,255,0.45);
+  letter-spacing:0.05em;
+}
+.footer-brand p{font-size:0.88rem;line-height:1.7;color:rgba(255,255,255,0.5);margin-bottom:1.5rem}
+.footer-social{display:flex;gap:0.6rem}
+.footer-social a{
+  width:34px;height:34px;border-radius:8px;
+  background:rgba(255,255,255,0.08);display:grid;place-items:center;
+  color:rgba(255,255,255,0.55);transition:var(--transition);
+}
+.footer-social a:hover{background:var(--gold);color:var(--white)}
+.footer-social svg{width:15px;height:15px;fill:currentColor}
+.footer-col h5{
+  font-size:0.8rem;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:1.25rem;
+}
+.footer-col ul li{margin-bottom:0.6rem}
+.footer-col ul li a{
+  font-size:0.88rem;color:rgba(255,255,255,0.6);
+  transition:color 0.2s;
+}
+.footer-col ul li a:hover{color:var(--gold-light)}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;padding:1.5rem 0;
+  font-size:0.82rem;color:rgba(255,255,255,0.35);
+}
+.footer-bottom a{color:rgba(255,255,255,0.4);transition:color 0.2s}
+.footer-bottom a:hover{color:var(--gold-light)}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.footer-grid{grid-template-columns:1fr}}
+
+/* ============================================
+   FLOATING WHATSAPP
+============================================ */
+.whatsapp-fab{
+  position:fixed;bottom:2rem;right:2rem;z-index:900;
+  width:54px;height:54px;border-radius:50%;
+  background:#25D366;display:grid;place-items:center;
+  box-shadow:0 6px 24px rgba(37,211,102,0.4);
+  transition:var(--transition);animation:fabPop 0.5s 1.5s both;
+}
+.whatsapp-fab:hover{transform:scale(1.1) translateY(-3px);box-shadow:0 10px 32px rgba(37,211,102,0.5)}
+.whatsapp-fab svg{width:28px;height:28px;fill:var(--white)}
+@keyframes fabPop{from{opacity:0;transform:scale(0.5)}to{opacity:1;transform:scale(1)}}
+
+/* ============================================
+   SCROLL ANIMATIONS
+============================================ */
+.fade-up{
+  opacity:0;transform:translateY(28px);
+  transition:opacity 0.65s ease,transform 0.65s ease;
+}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up.d1{transition-delay:0.1s}
+.fade-up.d2{transition-delay:0.2s}
+.fade-up.d3{transition-delay:0.3s}
+.fade-up.d4{transition-delay:0.4s}
+
+/* ============================================
+   ADMISSION BANNER
+============================================ */
+.admission-banner{
+  background:linear-gradient(90deg,var(--gold) 0%,#E8B840 50%,var(--gold) 100%);
+  padding:0.85rem 0;text-align:center;
+  animation:slideBg 8s linear infinite;
+  background-size:200% 100%;
+}
+@keyframes slideBg{0%{background-position:0% 0%}100%{background-position:200% 0%}}
+.admission-banner p{
+  font-weight:700;font-size:0.9rem;letter-spacing:0.05em;
+  color:var(--forest-dark);
+}
+.admission-banner strong{font-size:1rem}
+
+/* ============================================
+   MISC UTILITIES
+============================================ */
+.text-center{text-align:center}
+.mt-1{margin-top:0.5rem}
+.mt-2{margin-top:1rem}
+.mt-3{margin-top:1.5rem}
+.mb-3{margin-bottom:1.5rem}
+.flex-center{display:flex;align-items:center;justify-content:center}
+
+/* Divider */
+.section-divider{
+  width:60px;height:4px;background:var(--gold);
+  border-radius:2px;margin:1rem auto 2rem;
+}
+.section-divider.left{margin-left:0}
+</style>
+</head>
+<body>
+
+<!-- ADMISSION BANNER -->
+<div class="admission-banner">
+  <p>🎓 <strong>Admissions Open for MPSC 2026 Batch</strong> — Limited Seats Available &nbsp;|&nbsp; Enroll via WhatsApp: <strong>+91 98XXX XXXXX</strong></p>
+</div>
+
+<!-- TOP BAR -->
+<div id="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-contact">
+        <a href="tel:+919800000000">
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          +91 98XXX XXXXX
+        </a>
+        <a href="mailto:hello@aspireacademymizo.com">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          hello@aspireacademymizo.com
+        </a>
+        <a href="#">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Aizawl, Mizoram
+        </a>
+      </div>
+      <div class="topbar-social">
+        <a href="https://www.instagram.com/aspireacademymizo" aria-label="Instagram" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://youtube.com/@aspireacademymizo" aria-label="YouTube" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+        </div>
+        <div>
+          Aspire Academy
+          <span class="logo-sub">Mizo · MPSC Coaching</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="#" class="active">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#resources">Study Materials</a>
+        <a href="#strategy">Webinars</a>
+        <a href="#why">About Us</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-cta">
+        <a href="https://wa.me/919800000000" class="btn btn-primary">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Enroll Now
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <div class="nav-logo">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg></div>
+      <div>Aspire Academy<span class="logo-sub">Mizo</span></div>
+    </div>
+    <div class="close-btn" id="closeMenu">✕</div>
+  </div>
+  <a href="#" onclick="closeMobileMenu()">Home</a>
+  <a href="#courses" onclick="closeMobileMenu()">Courses</a>
+  <a href="#resources" onclick="closeMobileMenu()">Study Materials</a>
+  <a href="#strategy" onclick="closeMobileMenu()">Webinars</a>
+  <a href="#why" onclick="closeMobileMenu()">About Us</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <div style="margin-top:1.5rem">
+    <a href="https://wa.me/919800000000" class="btn btn-primary" style="width:100%;justify-content:center">
+      Enroll via WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content fade-up">
+        <div class="hero-badge">MPSC 2026 Admissions Open</div>
+        <h1 class="hero-title">
+          Mizoramah Civil Services <em>Dream</em> a<br>Pawimawh Tak
+        </h1>
+        <p class="hero-desc">
+          Aspire Academy Mizo is Mizoram's most trusted MPSC coaching institute — combining expert faculty, structured curriculum, and a deep understanding of Mizo aspirants' needs.
+        </p>
+        <div class="hero-buttons">
+          <a href="#courses" class="btn btn-primary">
+            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+            Explore Courses
+          </a>
+          <a href="https://wa.me/919800000000" class="btn btn-outline">Enroll Now →</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-num">500<span>+</span></div>
+            <div class="stat-label">Students Trained</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">95<span>%</span></div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5<span>+</span></div>
+            <div class="stat-label">Years of Excellence</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">20<span>+</span></div>
+            <div class="stat-label">MPSC Selections</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-up d2">
+        <div class="hero-card hero-card-main">
+          <div class="hero-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+          </div>
+          <h3>Complete MPSC Preparation</h3>
+          <p>From Prelims to Interview — a structured, step-by-step roadmap tailored for Mizoram Civil Services aspirants.</p>
+        </div>
+        <div class="hero-cards-row">
+          <div class="hero-card">
+            <div class="hero-card-icon" style="background:rgba(255,255,255,0.15)">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+            </div>
+            <h3>Daily Tests</h3>
+            <p>Practice exams every day to keep you sharp.</p>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-icon" style="background:rgba(255,255,255,0.15)">
+              <svg viewBox="0 0 24 24"><path d="M15 11h7v2h-7v-2zm1 4h6v2h-6v-2zm-2-8h8v2h-8V7zM3 18c0-3.31 2.69-6 6-6 1.08 0 2.09.29 2.95.8L13.37 11.38C12.11 10.52 10.61 10 9 10c-4.42 0-8 3.58-8 8v2h10.73l-2-2H3v-2zm6-4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+            </div>
+            <h3>Expert Faculty</h3>
+            <p>Learn from experienced MPSC mentors.</p>
+          </div>
+        </div>
+        <div class="hero-card hero-admission">
+          <h3>🎓 Admission Open</h3>
+          <span class="big">2026 Batch</span>
+          <p>Few seats remaining — enroll today</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES BAND -->
+<div id="features-band">
+  <div class="container">
+    <div class="features-band-inner">
+      <div class="feat-band-item">
+        <span class="feat-band-icon">🎓</span>
+        <span class="feat-band-num">500+</span>
+        <span class="feat-band-label">Students Enrolled</span>
+      </div>
+      <div class="feat-band-item">
+        <span class="feat-band-icon">🏆</span>
+        <span class="feat-band-num">20+</span>
+        <span class="feat-band-label">MPSC Selections</span>
+      </div>
+      <div class="feat-band-item">
+        <span class="feat-band-icon">📚</span>
+        <span class="feat-band-num">100+</span>
+        <span class="feat-band-label">Study Materials</span>
+      </div>
+      <div class="feat-band-item">
+        <span class="feat-band-icon">✅</span>
+        <span class="feat-band-num">95%</span>
+        <span class="feat-band-label">Student Satisfaction</span>
+      </div>
+      <div class="feat-band-item">
+        <span class="feat-band-icon">📅</span>
+        <span class="feat-band-num">5+</span>
+        <span class="feat-band-label">Years of Excellence</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUICK LINKS -->
+<div id="quicklinks">
+  <div class="container">
+    <div class="quicklinks-grid">
+      <a href="#courses" class="qlink">
+        <div class="qlink-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+        </div>
+        <span>Our Courses</span>
+      </a>
+      <a href="#resources" class="qlink">
+        <div class="qlink-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+        </div>
+        <span>Study Materials</span>
+      </a>
+      <a href="#resources" class="qlink">
+        <div class="qlink-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"/></svg>
+        </div>
+        <span>Current Affairs</span>
+      </a>
+      <a href="#contact" class="qlink">
+        <div class="qlink-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+        </div>
+        <span>Free Counselling</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="container">
+    <div class="section-intro fade-up">
+      <span class="label">Popular Courses</span>
+      <h2 style="margin-top:0.5rem">Choose Your Path to <em class="serif" style="color:var(--forest)">Success</em></h2>
+      <div class="section-divider"></div>
+      <p>Expertly designed programs for every stage of your MPSC journey — from foundation to final interview.</p>
+    </div>
+
+    <div class="course-cards">
+      <!-- Course 1 -->
+      <div class="course-card fade-up d1">
+        <div class="course-header">
+          <div class="course-cat">Foundation Program</div>
+          <div class="course-name">Prelims + Mains Complete</div>
+          <div class="course-price">
+            <span class="current">₹45,000</span>
+            <span class="original">₹47,000</span>
+          </div>
+        </div>
+        <div class="course-body">
+          <div class="course-features">
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              CSAT & General Studies (Full Syllabus)
+            </div>
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              English – Essay & Comprehension Classes
+            </div>
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Daily & Monthly Current Affairs Tests
+            </div>
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Mock Interview Preparation
+            </div>
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              App Access for 24 Months
+            </div>
+          </div>
+          <div class="course-duration">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+            Duration: 18–24 Months
+          </div>
+          <a href="https://wa.me/919800000000" class="btn btn-green" style="width:100%;justify-content:center">Enroll Now</a>
+        </div>
+      </div>
+
+      <!-- Course 2 – Featured -->
+      <div class="course-card featured fade-up d2">
+        <div class="course-header">
+          <div class="course-cat">Prelims + Mains</div>
+          <div class="course-name">Combined Course</div>
+          <div class="course-price">
+            <span class="current">₹40,000</span>
+            <span class="original">₹43,000</span>
+          </div>
+        </div>
+        <div class="course-body">
+          <div class="course-features">
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              CSAT with Topic-wise Practice
+            </div>
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Static GK + Regular Chapter Tests
+            </div>
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Daily Current Affairs Coverage
+            </div>
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Monthly Current Affairs Test
+            </div>
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              App Access for 15 Months
+            </div>
+          </div>
+          <div class="course-duration">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+            Duration: 12–15 Months
+          </div>
+          <a href="https://wa.me/919800000000" class="btn btn-primary" style="width:100%;justify-content:center">Enroll Now</a>
+        </div>
+      </div>
+
+      <!-- Course 3 -->
+      <div class="course-card fade-up d3">
+        <div class="course-header">
+          <div class="course-cat">Prelims Only</div>
+          <div class="course-name">Prelims Crash Course</div>
+          <div class="course-price">
+            <span class="current">₹20,000</span>
+            <span class="original">₹22,000</span>
+          </div>
+        </div>
+        <div class="course-body">
+          <div class="course-features">
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Rapid Revision of All Prelims Topics
+            </div>
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Daily Full-Length Mock Tests
+            </div>
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Current Affairs Capsule (3 Months)
+            </div>
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              PYQ Analysis & Strategy Sessions
+            </div>
+            <div class="course-feat">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              App Access for 6 Months
+            </div>
+          </div>
+          <div class="course-duration">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+            Duration: 4–6 Months
+          </div>
+          <a href="https://wa.me/919800000000" class="btn btn-green" style="width:100%;justify-content:center">Enroll Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<div id="about-strip">
+  <div class="container">
+    <div class="about-strip-inner">
+      <div class="about-strip-text fade-up">
+        <h2>Mizoram's Most Trusted <em>MPSC Institute</em></h2>
+        <p>We combine structured curriculum with expert mentorship so every Mizo aspirant has the best possible chance at success in the Civil Services.</p>
+      </div>
+      <div class="about-strip-features fade-up d2">
+        <div class="strip-feat">Small Batch Sizes</div>
+        <div class="strip-feat">Expert Faculty</div>
+        <div class="strip-feat">Proven Results</div>
+        <div class="strip-feat">Affordable Fees</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-visual fade-up">
+        <div class="why-floating">
+          <span class="num">20+</span>
+          <span class="lbl">MPSC<br>Selections</span>
+        </div>
+        <div class="why-img-wrapper">
+          <div class="why-img-pattern"></div>
+          <div class="why-img-content">
+            <div class="why-stat-cards">
+              <div class="why-stat-card">
+                <span class="num">500<em>+</em></span>
+                <span class="lbl">Students<br>Trained</span>
+              </div>
+              <div class="why-stat-card">
+                <span class="num">95<em>%</em></span>
+                <span class="lbl">Satisfaction<br>Rate</span>
+              </div>
+              <div class="why-stat-card">
+                <span class="num">5<em>+</em></span>
+                <span class="lbl">Years of<br>Excellence</span>
+              </div>
+              <div class="why-stat-card">
+                <span class="num">80</span>
+                <span class="lbl">Max Batch<br>Size</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-content fade-up d2">
+        <span class="label">Why Aspire Academy Mizo?</span>
+        <h2 style="margin-top:0.5rem">Where Mizo Aspirants <em class="serif" style="color:var(--forest)">Thrive</em></h2>
+        <div class="section-divider left"></div>
+        <p style="color:var(--text-light)">We understand the unique challenges Mizoram's civil service aspirants face. Our programs are built from the ground up for MPSC — with Mizo-specific context, local examples, and mentors who know the exam inside out.</p>
+
+        <div class="why-items">
+          <div class="why-item">
+            <div class="why-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            </div>
+            <div>
+              <h4>Expert Faculty with MPSC Experience</h4>
+              <p>Our teachers have firsthand knowledge of the MPSC exam pattern and marking scheme, giving you a genuine edge.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+            </div>
+            <div>
+              <h4>Comprehensive Study Materials</h4>
+              <p>Carefully curated notes, previous year question analyses, and monthly current affairs designed specifically for MPSC.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+            </div>
+            <div>
+              <h4>Daily Mock Tests & Analytics</h4>
+              <p>Identify weaknesses fast with regular topic-wise tests, full-length mocks, and personalized performance reports.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            </div>
+            <div>
+              <h4>Small Batches for Individual Attention</h4>
+              <p>We cap each batch at 80 students so every aspirant gets personalized guidance and direct access to faculty.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-intro fade-up">
+      <span class="label">Success Stories</span>
+      <h2 style="margin-top:0.5rem">Our <em class="serif" style="color:var(--forest)">Achievers</em> Speak</h2>
+      <div class="section-divider"></div>
+    </div>
+    <p class="testimonials-subtitle">Real students, real results — from Aspire Academy Mizo to the Mizoram Civil Services.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up d1">
+        <div class="testimonial-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="testimonial-text">The structured approach at Aspire Academy was exactly what I needed. The daily tests kept me consistently prepared, and the faculty truly understood what MPSC demands.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">L</div>
+          <div>
+            <div class="author-name">Lalrindika Ralte</div>
+            <div class="author-rank">MCS – Rank 4, MPSC 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up d2">
+        <div class="testimonial-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="testimonial-text">Joining Aspire Academy was the best decision I made. The current affairs coverage and mock tests are unmatched. I cleared Prelims on my first attempt!</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">Z</div>
+          <div>
+            <div class="author-name">Zosangzuali Hnamte</div>
+            <div class="author-rank">MCS – Rank 11, MPSC 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up d3">
+        <div class="testimonial-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="testimonial-text">The faculty here doesn't just teach — they mentor you through the entire process. I appreciated the small batch size because I could always ask questions without hesitation.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">V</div>
+          <div>
+            <div class="author-name">Vanlalhruaii Pachuau</div>
+            <div class="author-rank">MCS – Rank 7, MPSC 2023</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="https://www.instagram.com/aspireacademymizo" target="_blank" class="btn-ghost">
+        See All Success Stories
+        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STUDY RESOURCES -->
+<section id="resources">
+  <div class="container">
+    <div class="resources-header fade-up">
+      <span class="label" style="color:var(--gold-light)">Free Resources</span>
+      <h2>Study <em class="serif" style="color:var(--gold-light)">Materials</em> Library</h2>
+      <p>Access our growing library of MPSC notes, current affairs, and topic guides — always free for enrolled students.</p>
+    </div>
+
+    <div class="resources-grid">
+      <div class="resource-card fade-up d1">
+        <div class="resource-icon"><svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm.5-11H11v6l5.25 3.15.75-1.23-4.5-2.67V8z"/></svg></div>
+        <h4>Daily Current Affairs</h4>
+        <p>Updated every morning with key national & Mizoram-specific developments.</p>
+        <div class="resource-count">365+ Articles</div>
+      </div>
+      <div class="resource-card fade-up d2">
+        <div class="resource-icon"><svg viewBox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg></div>
+        <h4>MPSC Notes</h4>
+        <p>Subject-wise notes covering the entire MPSC General Studies syllabus.</p>
+        <div class="resource-count">50+ Topic PDFs</div>
+      </div>
+      <div class="resource-card fade-up d3">
+        <div class="resource-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+        <h4>Video Lectures</h4>
+        <p>Watch topic-wise videos by our expert faculty, available on YouTube.</p>
+        <div class="resource-count">100+ Videos</div>
+      </div>
+      <div class="resource-card fade-up d4">
+        <div class="resource-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg></div>
+        <h4>Mock Test Series</h4>
+        <p>Full-length and topic-wise tests modelled on actual MPSC pattern.</p>
+        <div class="resource-count">200+ Questions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY / WEBINAR -->
+<section id="strategy">
+  <div class="container">
+    <div class="strategy-inner">
+      <div class="fade-up">
+        <span class="label">Roadmap to Success</span>
+        <h2 style="margin-top:0.5rem">Your MPSC <em class="serif" style="color:var(--forest)">Game Plan</em></h2>
+        <div class="section-divider left"></div>
+        <p style="color:var(--text-light);max-width:480px">
+          Too much information can overwhelm any fresh aspirant. We cut through the noise with a clear, step-by-step roadmap built specifically for MPSC Civil Services.
+        </p>
+
+        <div class="strategy-list">
+          <div class="strategy-item">
+            <div class="strategy-num">01</div>
+            <div>
+              <h4>Understand the MPSC Syllabus & Exam Pattern</h4>
+              <p>Know what MPSC actually tests before you dive into preparation. Save months of misdirected effort.</p>
+            </div>
+          </div>
+          <div class="strategy-item">
+            <div class="strategy-num">02</div>
+            <div>
+              <h4>Build a Solid Foundation</h4>
+              <p>Master Static GK, Indian Polity, Geography, Economy, and History in a structured sequence.</p>
+            </div>
+          </div>
+          <div class="strategy-item">
+            <div class="strategy-num">03</div>
+            <div>
+              <h4>Stay on Top of Current Affairs</h4>
+              <p>Daily current affairs with monthly tests ensure you never fall behind on dynamic topics.</p>
+            </div>
+          </div>
+          <div class="strategy-item">
+            <div class="strategy-num">04</div>
+            <div>
+              <h4>Practice & Revise Relentlessly</h4>
+              <p>Mock tests, PYQ analysis, and regular revision sessions to lock in learning and build exam confidence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="strategy-cta-box fade-up d2">
+        <h3>Free Strategy Webinar</h3>
+        <p>Join our monthly online session: <em>Road-Map to Mizoram Civil Services Exam</em> — completely free for all aspirants.</p>
+        <div class="webinar-details">
+          <div class="webinar-detail">
+            <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+            Every last Saturday of the month
+          </div>
+          <div class="webinar-detail">
+            <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+            Live on YouTube & Instagram
+          </div>
+          <div class="webinar-detail">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            100% Free — No Registration Needed
+          </div>
+        </div>
+        <a href="https://www.instagram.com/aspireacademymizo" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center">
+          Follow for Updates →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="container">
+    <div class="section-intro fade-up">
+      <span class="label">Video Lectures</span>
+      <h2 style="margin-top:0.5rem">Learn Through <em class="serif" style="color:var(--forest)">Videos</em></h2>
+      <div class="section-divider"></div>
+      <p>Watch our expert-led video lectures on YouTube — free for all aspirants.</p>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-card fade-up d1">
+        <a href="https://youtube.com/@aspireacademymizo" target="_blank">
+          <div class="video-thumb">
+            <div class="video-pattern"></div>
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="video-tag">Polity</span>
+            <span class="video-duration">18:42</span>
+          </div>
+        </a>
+        <div class="video-body">
+          <h4>Indian Constitution – Fundamental Rights Explained for MPSC</h4>
+          <p>Comprehensive coverage of Part III with PYQ analysis</p>
+        </div>
+      </div>
+
+      <div class="video-card fade-up d2">
+        <a href="https://youtube.com/@aspireacademymizo" target="_blank">
+          <div class="video-thumb" style="background:linear-gradient(135deg,#2E6B5A 0%,#1A3C34 100%)">
+            <div class="video-pattern"></div>
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="video-tag">Current Affairs</span>
+            <span class="video-duration">24:15</span>
+          </div>
+        </a>
+        <div class="video-body">
+          <h4>Monthly Current Affairs Roundup – May 2026 | MPSC Special</h4>
+          <p>All key events and developments relevant to MPSC 2026</p>
+        </div>
+      </div>
+
+      <div class="video-card fade-up d3">
+        <a href="https://youtube.com/@aspireacademymizo" target="_blank">
+          <div class="video-thumb" style="background:linear-gradient(135deg,#C9901C 0%,#1A3C34 100%)">
+            <div class="video-pattern"></div>
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="video-tag">Strategy</span>
+            <span class="video-duration">31:08</span>
+          </div>
+        </a>
+        <div class="video-body">
+          <h4>How to Start MPSC Preparation from Scratch – Complete Roadmap</h4>
+          <p>A step-by-step guide for beginners starting their MPSC journey</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="https://youtube.com/@aspireacademymizo" target="_blank" class="btn btn-green">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Watch All Videos on YouTube
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="newsletter-text fade-up">
+        <span class="label" style="color:var(--gold-light)">Stay Updated</span>
+        <h2 style="color:var(--white);margin-top:0.5rem">Never Miss an <em class="serif" style="color:var(--gold-light)">Update</em></h2>
+        <p>Subscribe for daily current affairs, exam notifications, free study materials, and scholarship announcements straight to your inbox.</p>
+      </div>
+      <div class="newsletter-form fade-up d2">
+        <div class="newsletter-form-row">
+          <input type="email" class="newsletter-input" placeholder="Enter your email address" id="emailInput"/>
+          <button class="btn btn-primary" onclick="handleSubscribe()">Subscribe</button>
+        </div>
+        <p class="newsletter-note" id="subMsg">📬 Join 1,000+ aspirants already subscribed. No spam, ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <span class="label">Get In Touch</span>
+        <h2 style="margin-top:0.5rem">Talk to <em class="serif" style="color:var(--forest)">Our Team</em></h2>
+        <div class="section-divider left"></div>
+        <p>Have questions about courses, fees, or the admission process? Reach out — we're here to help you find the right path to your MPSC goal.</p>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+            </div>
+            <div class="contact-item-text">
+              <strong>Phone / WhatsApp</strong>
+              <a href="tel:+919800000000">+91 98XXX XXXXX</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <div class="contact-item-text">
+              <strong>Email</strong>
+              <a href="mailto:hello@aspireacademymizo.com">hello@aspireacademymizo.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div class="contact-item-text">
+              <strong>Location</strong>
+              <span>Aizawl, Mizoram, India</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </div>
+            <div class="contact-item-text">
+              <strong>Instagram</strong>
+              <a href="https://www.instagram.com/aspireacademymizo" target="_blank">@aspireacademymizo</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="https://wa.me/919800000000" class="btn btn-primary">WhatsApp Us</a>
+          <a href="https://www.instagram.com/aspireacademymizo" target="_blank" class="btn btn-green">Follow on Instagram</a>
+        </div>
+      </div>
+
+      <div class="contact-form fade-up d2">
+        <h3>Send Us a Message</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" class="form-input" placeholder="Full name"/>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" class="form-input" placeholder="+91 XXXXX XXXXX"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" class="form-input" placeholder="you@email.com"/>
+        </div>
+        <div class="form-group">
+          <label>Interested Course</label>
+          <select class="form-input">
+            <option>Select a course...</option>
+            <option>Foundation Course (Prelims + Mains Complete)</option>
+            <option>Combined Course (Prelims + Mains)</option>
+            <option>Prelims Crash Course</option>
+            <option>Free Counselling</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea class="form-input" placeholder="Tell us about yourself and your MPSC goals..."></textarea>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="handleContactForm()">
+          Send Message →
+        </button>
+        <p id="formMsg" style="text-align:center;margin-top:1rem;font-size:0.85rem;color:var(--forest);display:none">
+          ✅ Message sent! We'll get back to you shortly.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-box">
+            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+          </div>
+          <div class="logo-text">
+            Aspire Academy Mizo
+            <small>MPSC Civil Services Coaching</small>
+          </div>
+        </div>
+        <p>Empowering Mizoram's brightest minds to achieve their civil services dreams with structured guidance, expert faculty, and a proven methodology.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/aspireacademymizo" aria-label="Instagram" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://youtube.com/@aspireacademymizo" aria-label="YouTube" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://wa.me/919800000000" aria-label="WhatsApp" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#resources">Study Materials</a></li>
+          <li><a href="#strategy">Webinars</a></li>
+          <li><a href="#why">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Study Materials</h5>
+        <ul>
+          <li><a href="#resources">MPSC Notes</a></li>
+          <li><a href="#resources">Indian Polity</a></li>
+          <li><a href="#resources">Indian Economy</a></li>
+          <li><a href="#resources">Indian Geography</a></li>
+          <li><a href="#resources">Modern History</a></li>
+          <li><a href="#resources">Daily Current Affairs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Courses</h5>
+        <ul>
+          <li><a href="#courses">Foundation Course</a></li>
+          <li><a href="#courses">Combined Course</a></li>
+          <li><a href="#courses">Prelims Crash Course</a></li>
+          <li><a href="#strategy">Free Webinar</a></li>
+          <li><a href="#contact">Free Counselling</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Aspire Academy Mizo, Aizawl, Mizoram. All rights reserved.</p>
+      <div style="display:flex;gap:1.5rem">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/919800000000" class="whatsapp-fab" aria-label="WhatsApp" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+  navbar.classList.toggle('scrolled',window.scrollY>60);
+},{ passive:true });
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMenu  = document.getElementById('closeMenu');
+
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+closeMenu.addEventListener('click', closeMobileMenu);
+function closeMobileMenu(){
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// Scroll animations
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+},{threshold:0.12});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+// Newsletter
+function handleSubscribe(){
+  const input = document.getElementById('emailInput');
+  const msg   = document.getElementById('subMsg');
+  if(input.value && input.value.includes('@')){
+    msg.textContent = '🎉 You\'re subscribed! Check your inbox for a welcome email.';
+    msg.style.color = 'var(--gold-light)';
+    input.value = '';
+  } else {
+    msg.textContent = '⚠️ Please enter a valid email address.';
+    msg.style.color = '#ff9999';
+  }
+}
+document.getElementById('emailInput').addEventListener('keydown',e=>{
+  if(e.key==='Enter') handleSubscribe();
+});
+
+// Contact form
+function handleContactForm(){
+  const msg = document.getElementById('formMsg');
+  msg.style.display='block';
+  setTimeout(()=>msg.style.display='none', 5000);
+}
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks  = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{
+    if(window.scrollY >= s.offsetTop - 120) cur = s.id;
+  });
+  navLinks.forEach(a=>{
+    a.classList.remove('active');
+    if(a.getAttribute('href')==='#'+cur) a.classList.add('active');
+  });
+},{passive:true});
+</script>
+</body>
+</html>
