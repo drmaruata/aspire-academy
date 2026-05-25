@@ -8,6 +8,7 @@ import { Hero } from "@/components/sections/hero";
 import { OurCoursesMini } from "@/components/sections/our-courses-mini";
 import { Courses } from "@/components/sections/courses";
 import { WhyChoose } from "@/components/sections/why-choose";
+import { Faculty } from "@/components/sections/faculty";
 import { Testimonials } from "@/components/sections/testimonials";
 import { WebinarRoadmap } from "@/components/sections/webinar-roadmap";
 import { Resources } from "@/components/sections/resources";
@@ -39,6 +40,7 @@ export default async function HomePage() {
         <OurCoursesMini />
         <Courses courses={courses} />
         <WhyChoose />
+        <Faculty />
         <Testimonials testimonials={testimonials} />
         <WebinarRoadmap />
         <Resources resources={resources} />

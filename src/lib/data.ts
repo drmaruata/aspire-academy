@@ -9,6 +9,8 @@ export type Course = {
   name: string;
   priceCurrent: string;
   priceOriginal?: string;
+  /** Integer rupees used by Razorpay. 0 means "use WhatsApp fallback". */
+  priceINR: number;
   features: string[];
   duration: string;
   featured?: boolean;
@@ -232,10 +234,11 @@ export const whyItems: WhyItem[] = [
 
 export const navItems = [
   { label: "Home", href: "/" },
+  { label: "About Us", href: "#why" },
+  { label: "Faculty", href: "#faculty" },
   { label: "Courses", href: "#courses" },
   { label: "Study Materials", href: "#resources" },
   { label: "Webinars", href: "#strategy" },
-  { label: "About Us", href: "#why" },
   { label: "Contact", href: "#contact" },
 ] as const;
 
@@ -367,3 +370,53 @@ export const footerPopularPages = [
   { href: "#testimonials", label: "Success Stories" },
   { href: "#strategy", label: "Free Webinar" },
 ] as const;
+
+/* ============================================
+   Faculty
+============================================ */
+export type Faculty = {
+  slug: string;
+  name: string;
+  subject: string;
+  image: string;
+};
+
+export const faculty: Faculty[] = [
+  {
+    slug: "natalia-rosangliani-sailo",
+    name: "Natalia Rosangliani Sailo",
+    subject: "General Science & Geography",
+    image: "/faculty/natalia-rosangliani-sailo.png",
+  },
+  {
+    slug: "ngurauva",
+    name: "Ngurauva",
+    subject: "Maths & Reasoning",
+    image: "/faculty/ngurauva.png",
+  },
+  {
+    slug: "h-frankie-lalnunmawia",
+    name: "H. Frankie Lalnunmawia",
+    subject: "Maths & Reasoning",
+    image: "/faculty/h-frankie-lalnunmawia.png",
+  },
+  {
+    slug: "jonellie-vl-rinpuii",
+    name: "Jonellie VL Rinpuii",
+    subject:
+      "Indian Polity, Governance, Internal Security & International Relations",
+    image: "/faculty/jonellie-vl-rinpuii.png",
+  },
+  {
+    slug: "gabriel-lalmuankima",
+    name: "Gabriel Lalmuankima",
+    subject: "Mizo",
+    image: "/faculty/gabriel-lalmuankima.png",
+  },
+  {
+    slug: "dr-c-zohmingsangi",
+    name: "Dr. C. Zohmingsangi",
+    subject: "EVS & General Science",
+    image: "/faculty/dr-c-zohmingsangi.png",
+  },
+];
